@@ -9,16 +9,23 @@ export default function CreditSimulator() {
   2) pensar input para que acepte numeros enteros o moneda segun de que Selector se lo renderiza
   3) pensar al Slider para que renderice numeros o moneda segun de que Selector se lo renderice
   4) Componentes faltantes: SliderContainer/Slider, FeeContainer, ActionButtonsRow, CreditButton, FeeDetailButton
-  5) Ver font que pide el ejercicio y colores azul bkg afinarlos */
+  5) Ver font que pide el ejercicio y colores azul bkg afinarlos
+  6) Dividir los componentes en carpetas distintas */
   const [creditAmount, setCreditAmount] = useState(null)
   const handleChange = ({ target }) => {
     const inputValue = target.value
     setCreditAmount(inputValue)
   }
+  const minCreditValue = 5000
+  const maxCreditValue = 50000
   return (
     <div className="simulator-container">
       <h1>Simulá tu crédito</h1>
-      <Selector onChange={handleChange} />
+      <Selector
+        onChange={handleChange}
+        minCreditValue={minCreditValue}
+        maxCreditValue={maxCreditValue}
+      />
       {/* <h1>{creditAmount}</h1> */}
     </div>
   )

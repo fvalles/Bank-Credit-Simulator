@@ -1,0 +1,6 @@
+.slider-container {
+    display: flex;
+    width: 380px;
+    justify-content: center;
+    margin-top: 20px;
+}
