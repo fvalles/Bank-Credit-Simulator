@@ -1,0 +1,38 @@
+input { 
+    background-color: #1348A0;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    height: 100%;
+    padding: 0 25px 0 35px;
+    text-align: center;
+    width: 130px;
+}
+
+.input-container {
+    height: 40px;
+    position: relative;
+}
+
+.input-container:before {
+    content: "$";
+    font-size: 25px;
+    line-height: 40px;
+    padding-left: 10px;
+    position: absolute;
+}
+
+::-webkit-input-placeholder {
+    color: #DEDEE3;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+    transform:translate3d(0,-4px,0)
+ }
+
+ input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

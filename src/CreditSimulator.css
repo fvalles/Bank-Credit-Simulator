@@ -1,0 +1,14 @@
+.simulator-container {
+  align-items: center;
+  background-color: #1348A0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto 0;
+  padding: 40px;
+  width: 450px;
+}
+
+h1 {
+    margin: 0 0 50px 0;
+}
