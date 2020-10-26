@@ -11,22 +11,55 @@ export default function CreditSimulator() {
   4) Componentes faltantes: SliderContainer/Slider, FeeContainer, ActionButtonsRow, CreditButton, FeeDetailButton
   5) Ver font que pide el ejercicio y colores azul bkg afinarlos
   6) Dividir los componentes en carpetas distintas */
-  const [creditAmount, setCreditAmount] = useState(null)
-  const handleChange = ({ target }) => {
-    const inputValue = target.value
-    setCreditAmount(inputValue)
-  }
   const minCreditValue = 5000
   const maxCreditValue = 50000
+
+  const [credit, setCredit] = useState(minCreditValue)
+  const [inputCredit, setInputCredit] = useState(minCreditValue)
+  const [sliderCredit, setSliderCredit] = useState(minCreditValue)
+
+  const handleCreditInputChange = ({ target }) => {
+    const inputValue = parseInt(target.value, 10)
+    setInputCredit(inputValue)
+    if (inputValue >= minCreditValue && inputValue <= maxCreditValue) {
+      setSliderCredit(inputValue)
+      setCredit(inputValue)
+    }
+  }
+
+  const handleCreditInputBlur = ({ target }) => {
+    const inputValue = parseInt(target.value, 10)
+    let validValue = null
+    if (inputValue < minCreditValue) {
+      validValue = minCreditValue
+    } else if (inputValue > maxCreditValue) {
+      validValue = maxCreditValue
+    }
+    if (validValue) {
+      setInputCredit(validValue)
+      setSliderCredit(validValue)
+      setCredit(validValue)
+    }
+  }
+
+  const handleCreditSliderChange = sliderValue => {
+    setSliderCredit(sliderValue)
+    setInputCredit(sliderValue)
+    setCredit(sliderValue)
+  }
+
   return (
     <div className="simulator-container">
       <h1>Simulá tu crédito</h1>
       <Selector
-        onChange={handleChange}
+        onInputChange={handleCreditInputChange}
+        onInputBlur={handleCreditInputBlur}
+        onSliderChange={handleCreditSliderChange}
+        inputCredit={inputCredit}
+        sliderCredit={sliderCredit}
         minCreditValue={minCreditValue}
         maxCreditValue={maxCreditValue}
       />
-      {/* <h1>{creditAmount}</h1> */}
     </div>
   )
 }

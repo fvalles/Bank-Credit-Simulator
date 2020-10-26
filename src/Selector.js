@@ -4,19 +4,41 @@ import TitleContainer from './TitleContainer'
 import CustomSlider from './CustomSlider'
 import './Selector.css'
 
-export default function Selector({ onChange, minCreditValue, maxCreditValue }) {
+export default function Selector({
+  inputCredit,
+  sliderCredit,
+  minCreditValue,
+  maxCreditValue,
+  onInputChange,
+  onInputBlur,
+  onSliderChange,
+}) {
   return (
     <>
-      <TitleContainer label="MONTO TOTAL" onChange={onChange} />
+      <TitleContainer
+        label="MONTO TOTAL"
+        onChange={onInputChange}
+        credit={inputCredit}
+        onBlur={onInputBlur}
+      />
       <div className="slider-container">
-        <CustomSlider min={minCreditValue} max={maxCreditValue} />
+        <CustomSlider
+          credit={sliderCredit}
+          min={minCreditValue}
+          max={maxCreditValue}
+          onChange={onSliderChange}
+        />
       </div>
     </>
   )
 }
 
 Selector.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  inputCredit: PropTypes.number.isRequired,
+  sliderCredit: PropTypes.number.isRequired,
   minCreditValue: PropTypes.number.isRequired,
   maxCreditValue: PropTypes.number.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onInputBlur: PropTypes.func.isRequired,
+  onSliderChange: PropTypes.func.isRequired,
 }
