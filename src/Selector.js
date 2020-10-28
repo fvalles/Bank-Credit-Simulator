@@ -19,6 +19,7 @@ export default function Selector({
   return (
     <>
       <TitleContainer
+        currency={currency}
         label={label}
         onChange={onInputChange}
         value={inputValue}

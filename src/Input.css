@@ -7,7 +7,7 @@ input {
     height: 100%;
     padding: 0 25px 0 35px;
     text-align: center;
-    width: 130px;
+    width: 90px;
 }
 
 .input-container {
@@ -15,7 +15,12 @@ input {
     position: relative;
 }
 
-.input-container:before {
+.input-currency-container {
+    height: 40px;
+    position: relative;
+}
+
+.input-currency-container:before {
     content: "$";
     font-size: 25px;
     line-height: 40px;

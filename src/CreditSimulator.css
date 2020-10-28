@@ -12,3 +12,23 @@
 h1 {
     margin: 0 0 50px 0;
 }
+
+.fee-container {
+  align-items: center;
+  background-color: #0F3B85;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  width: 100%;
+}
+
+.fee-amount {
+  font-weight: bold;
+  font-size: 32px;
+  margin: 0;
+}
+
+.fee-title {
+  font-weight: bold;
+  margin: 0;
+}

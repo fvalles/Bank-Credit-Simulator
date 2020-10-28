@@ -111,6 +111,10 @@ export default function CreditSimulator() {
         onSliderChange={handlePeriodSliderChange}
         sliderCredit={sliderPeriod}
       />
+      <div className="fee-container">
+        <p className="fee-title">CUOTA FIJA POR MES</p>
+        <p className="fee-amount">$ {Math.round((credit / period) * 100) / 100}</p>
+      </div>
     </div>
   )
 }

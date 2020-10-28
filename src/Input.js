@@ -2,9 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import './Input.css'
 
-export default function Input({ value, placeHolder, onChange, onBlur }) {
+export default function Input({ currency, value, placeHolder, onChange, onBlur }) {
+  const inputContainerClass = currency ? 'input-currency-container' : 'input-container'
   return (
-    <span className="input-container">
+    <span className={inputContainerClass}>
       <input
         type="number"
         placeholder={placeHolder}
@@ -17,8 +18,13 @@ export default function Input({ value, placeHolder, onChange, onBlur }) {
 }
 
 Input.propTypes = {
+  currency: PropTypes.string,
   value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   placeHolder: PropTypes.string.isRequired,
+}
+
+Input.defaultProps = {
+  currency: null,
 }
