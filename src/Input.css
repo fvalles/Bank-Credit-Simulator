@@ -23,6 +23,7 @@ input {
 .input-currency-container:before {
     content: "$";
     font-size: 25px;
+    font-weight: 700;
     line-height: 40px;
     padding-left: 10px;
     position: absolute;

@@ -1,18 +1,19 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react'
 import Selector from './Selector'
+import Button from './Button'
 import './CreditSimulator.css'
 
 export default function CreditSimulator() {
   /* No olvidar:
-  1) poner limite min y max a los inputs y a los sliders
-    (crear detec de errores para que no se ingresen num menores a 0 y mayores al max)
-  2) pensar input para que acepte numeros enteros o moneda segun de que Selector se lo renderiza
-  3) pensar al Slider para que renderice numeros o moneda segun de que Selector se lo renderice
-  4) Componentes faltantes: SliderContainer/Slider, FeeContainer, ActionButtonsRow, CreditButton, FeeDetailButton
-  5) Ver font que pide el ejercicio y colores azul bkg afinarlos
-  6) Dividir los componentes en carpetas distintas
-  7) Ver como importo CSS para que no queden estilos globales / CSS Modules / Sass
-  8) Refactorear funciones handlers */
+  1) Formatear num con sep de miles
+  2) Ver colores azul bkg afinarlos
+  3) Dividir los componentes en carpetas distintas
+  4) Ver como importo CSS para que no queden estilos globales / CSS Modules / Sass
+  5) Refactorear funciones handlers y ver si conglomero states en 2 objetos de 3 key-values
+  6) Aplicar alguna funcionalidad a los 2 botones. Una puede ser un alert sencillo y el otro un pop-up
+  o una lista que se despliegue en la pantalla
+  7) ordernar alfabeticamente styles clases */
   const minCreditValue = 5000
   const maxCreditValue = 50000
   const minPeriod = 3
@@ -114,6 +115,23 @@ export default function CreditSimulator() {
       <div className="fee-container">
         <p className="fee-title">CUOTA FIJA POR MES</p>
         <p className="fee-amount">$ {Math.round((credit / period) * 100) / 100}</p>
+      </div>
+      <div className="buttons-container">
+        <Button
+          label="OBTENÉ CRÉDITO"
+          height={50}
+          width="65%"
+          bkColor="#75D1A8"
+          color="white"
+          fontSize={20}
+        />
+        <Button
+          label="VER DETALLE DE CUOTAS"
+          height={50}
+          width="34%"
+          bkColor="#3E76CC"
+          color="white"
+        />
       </div>
     </div>
   )

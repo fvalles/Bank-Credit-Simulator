@@ -13,10 +13,18 @@ h1 {
     margin: 0 0 50px 0;
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .fee-container {
   align-items: center;
   background-color: #0F3B85;
+  box-sizing: border-box;
   display: flex;
+  height: 50px;
   justify-content: space-around;
   padding: 5px;
   width: 100%;
@@ -24,7 +32,7 @@ h1 {
 
 .fee-amount {
   font-weight: bold;
-  font-size: 32px;
+  font-size: 34px;
   margin: 0;
 }
 
