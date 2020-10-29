@@ -8,7 +8,6 @@ export default function CreditSimulator() {
   /* No olvidar:
   1) Formatear num con sep de miles
   4) Ver como importo CSS para que no queden estilos globales / CSS Modules / Sass
-  5) Refactorear funciones handlers y ver si conglomero states en 2 objetos de 3 key-values
   6) Aplicar alguna funcionalidad a los 2 botones. Una puede ser un alert sencillo y el otro un pop-up
   o una lista que se despliegue en la pantalla
   7) ordernar alfabeticamente styles clases */
@@ -29,12 +28,30 @@ export default function CreditSimulator() {
     sliderValue: minPeriod,
   })
 
-  const handleCreditInputChange = ({ target }) => {
-    const inputValue = parseInt(target.value, 10)
+  /* Beginning of Helper Functions */
+  const validateInputValue = (inputValue, minValue, maxValue) => {
     let validValue = false
-    if (inputValue >= minCredit && inputValue <= maxCredit) {
+    if (inputValue >= minValue && inputValue <= maxValue) {
       validValue = true
     }
+    return validValue
+  }
+
+  const keepValueLimits = (value, minValue, maxValue) => {
+    let extremeValue = null
+    if (value < minValue) {
+      extremeValue = minValue
+    } else if (value > maxValue) {
+      extremeValue = maxValue
+    }
+    return extremeValue
+  }
+  /* End of Helper Functions */
+
+  /* Beginning of Events Handler Functions */
+  const handleCreditInputChange = ({ target }) => {
+    const inputValue = parseInt(target.value, 10)
+    const validValue = validateInputValue(inputValue, minCredit, maxCredit)
     if (validValue) {
       setCredit({ value: inputValue, inputValue, sliderValue: inputValue })
     } else {
@@ -49,12 +66,7 @@ export default function CreditSimulator() {
 
   const handleCreditInputBlur = ({ target }) => {
     const value = parseInt(target.value, 10)
-    let inputValue = null
-    if (value < minCredit) {
-      inputValue = minCredit
-    } else if (value > maxCredit) {
-      inputValue = maxCredit
-    }
+    const inputValue = keepValueLimits(value, minCredit, maxCredit)
     if (inputValue) {
       setCredit({ value: inputValue, inputValue, sliderValue: inputValue })
     }
@@ -66,10 +78,7 @@ export default function CreditSimulator() {
 
   const handlePeriodInputChange = ({ target }) => {
     const inputValue = parseInt(target.value, 10)
-    let validValue = false
-    if (inputValue >= minPeriod && inputValue <= maxPeriod) {
-      validValue = true
-    }
+    const validValue = validateInputValue(inputValue, minPeriod, maxPeriod)
     if (validValue) {
       setPeriod({ value: inputValue, inputValue, sliderValue: inputValue })
     } else {
@@ -84,12 +93,7 @@ export default function CreditSimulator() {
 
   const handlePeriodInputBlur = ({ target }) => {
     const value = parseInt(target.value, 10)
-    let inputValue = null
-    if (value < minPeriod) {
-      inputValue = minPeriod
-    } else if (value > maxPeriod) {
-      inputValue = maxPeriod
-    }
+    const inputValue = keepValueLimits(value, minPeriod, maxPeriod)
     if (inputValue) {
       setPeriod({ value: inputValue, inputValue, sliderValue: inputValue })
     }
@@ -98,6 +102,7 @@ export default function CreditSimulator() {
   const handlePeriodSliderChange = sliderValue => {
     setPeriod({ value: sliderValue, inputValue: sliderValue, sliderValue })
   }
+  /* End of Events Handler Functions */
 
   return (
     <div className="simulator-container">
