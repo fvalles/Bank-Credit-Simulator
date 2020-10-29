@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Button.css'
 
 export default function Button({ label, bkColor, color, fontSize, width, height }) {
   const style = {
