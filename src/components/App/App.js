@@ -1,6 +1,6 @@
 import React from 'react'
-import CreditSimulator from './CreditSimulator'
-import './App.css'
+import CreditSimulator from '../CreditSimulator'
+import './style.css'
 
 function App() {
   return <CreditSimulator />

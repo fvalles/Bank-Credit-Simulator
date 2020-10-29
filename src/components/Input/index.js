@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import './Input.css'
+import './style.css'
 
 export default function Input({ currency, value, placeHolder, onChange, onBlur }) {
   const inputContainerClass = currency ? 'input-currency-container' : 'input-container'

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './SliderLabels.css'
+import './style.css'
 
 export default function SliderLabels({ min, max, currency }) {
   let formattedMin

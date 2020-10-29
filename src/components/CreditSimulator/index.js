@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react'
-import Selector from './Selector'
-import Button from './Button'
-import './CreditSimulator.css'
+import Selector from '../Selector'
+import Button from '../Button'
+import './style.css'
 
 export default function CreditSimulator() {
   /* No olvidar:

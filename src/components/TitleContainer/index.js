@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from './Input'
-import './TitleContainer.css'
+import Input from '../Input'
+import './style.css'
 
 export default function TitleContainer({ currency, value, label, onChange, onBlur }) {
   return (

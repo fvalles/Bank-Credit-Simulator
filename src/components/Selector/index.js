@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TitleContainer from './TitleContainer'
-import CustomSlider from './CustomSlider'
-import SliderLabels from './SliderLabels'
-import './Selector.css'
+import TitleContainer from '../TitleContainer'
+import CustomSlider from '../CustomSlider'
+import SliderLabels from '../SliderLabels'
+import './style.css'
 
 export default function Selector({
   currency,
