@@ -4,3 +4,9 @@
     justify-content: space-between;
     width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .title-label {
+        font-size: 14px;
+    }
+}

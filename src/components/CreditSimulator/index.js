@@ -57,9 +57,11 @@ export default function CreditSimulator() {
   const showFeesDetail = () => {
     let message = ''
     const feeAmount = Math.round((credit.value / period.value) * 100) / 100
+    numeral.defaultFormat('$ 0,0.00')
+    const feeAmountFormatted = numeral(feeAmount).format()
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < period.value; i++) {
-      message += `Cuota ${i + 1}: $${feeAmount}\n`
+      message += `Cuota ${i + 1}: ${feeAmountFormatted}\n`
     }
     return message
   }
@@ -129,8 +131,11 @@ export default function CreditSimulator() {
   }
 
   const handleGetCreditBtnClick = () => {
+    const creditAmount = credit.value
+    numeral.defaultFormat('$ 0,0')
+    const creditAmountFormatted = numeral(creditAmount).format()
     // eslint-disable-next-line no-alert
-    alert(`¡Obtuviste tu crédito por $${credit.value} en ${period.value} cuotas s/interés!`)
+    alert(`¡Obtuviste tu crédito por ${creditAmountFormatted} en ${period.value} cuotas s/interés!`)
   }
 
   const handleGetFeesDetailBtnClick = () => {
@@ -180,7 +185,7 @@ export default function CreditSimulator() {
           width="65%"
           bkColor="#75D1A8"
           color="white"
-          fontSize={20}
+          fontSize={16}
           onClick={handleGetCreditBtnClick}
         />
         <Button
@@ -189,6 +194,7 @@ export default function CreditSimulator() {
           width="34%"
           bkColor="#3E76CC"
           color="white"
+          fontSize={12}
           onClick={handleGetFeesDetailBtnClick}
         />
       </div>

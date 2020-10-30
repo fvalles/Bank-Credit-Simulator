@@ -6,7 +6,7 @@ import './style.css'
 export default function TitleContainer({ currency, value, label, onChange, onBlur }) {
   return (
     <div className="flex-row">
-      <p>{label}</p>
+      <p className="title-label">{label}</p>
       <Input currency={currency} placeHolder="" onChange={onChange} value={value} onBlur={onBlur} />
     </div>
   )

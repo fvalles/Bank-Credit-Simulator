@@ -28,3 +28,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+    input { 
+        font-size: 20px;
+        width: 120px;
+    }
+
+    .input-container {
+        height: 35px;
+    }
+}
