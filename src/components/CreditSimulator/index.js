@@ -1,16 +1,11 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react'
+import numeral from 'numeral'
 import Selector from '../Selector'
 import Button from '../Button'
 import './style.css'
 
 export default function CreditSimulator() {
-  /* No olvidar:
-  1) Formatear num con sep de miles
-  4) Ver como importo CSS para que no queden estilos globales / CSS Modules / Sass
-  6) Aplicar alguna funcionalidad a los 2 botones. Una puede ser un alert sencillo y el otro un pop-up
-  o una lista que se despliegue en la pantalla
-  7) ordernar alfabeticamente styles clases */
   const minCredit = 5000
   const maxCredit = 50000
   const minPeriod = 3
@@ -46,11 +41,33 @@ export default function CreditSimulator() {
     }
     return extremeValue
   }
+
+  const extractNumFromStr = str => {
+    let inputStringNum = str.substring(2)
+    let dotPos = inputStringNum.indexOf('.')
+    while (dotPos !== -1) {
+      const firstPartOfNum = inputStringNum.substring(0, dotPos)
+      const secPartOfNum = inputStringNum.substring(dotPos + 1)
+      inputStringNum = firstPartOfNum + secPartOfNum
+      dotPos = inputStringNum.indexOf('.')
+    }
+    return parseInt(inputStringNum, 10)
+  }
+
+  const showFeesDetail = () => {
+    let message = ''
+    const feeAmount = Math.round((credit.value / period.value) * 100) / 100
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < period.value; i++) {
+      message += `Cuota ${i + 1}: $${feeAmount}\n`
+    }
+    return message
+  }
   /* End of Helper Functions */
 
   /* Beginning of Events Handler Functions */
   const handleCreditInputChange = ({ target }) => {
-    const inputValue = parseInt(target.value, 10)
+    const inputValue = extractNumFromStr(target.value)
     const validValue = validateInputValue(inputValue, minCredit, maxCredit)
     if (validValue) {
       setCredit({ value: inputValue, inputValue, sliderValue: inputValue })
@@ -65,7 +82,7 @@ export default function CreditSimulator() {
   }
 
   const handleCreditInputBlur = ({ target }) => {
-    const value = parseInt(target.value, 10)
+    const value = extractNumFromStr(target.value)
     const inputValue = keepValueLimits(value, minCredit, maxCredit)
     if (inputValue) {
       setCredit({ value: inputValue, inputValue, sliderValue: inputValue })
@@ -77,8 +94,14 @@ export default function CreditSimulator() {
   }
 
   const handlePeriodInputChange = ({ target }) => {
-    const inputValue = parseInt(target.value, 10)
-    const validValue = validateInputValue(inputValue, minPeriod, maxPeriod)
+    let inputValue = target.value
+    let validValue
+    if (inputValue === '') {
+      validValue = false
+    } else {
+      inputValue = parseInt(target.value, 10)
+      validValue = validateInputValue(inputValue, minPeriod, maxPeriod)
+    }
     if (validValue) {
       setPeriod({ value: inputValue, inputValue, sliderValue: inputValue })
     } else {
@@ -96,13 +119,30 @@ export default function CreditSimulator() {
     const inputValue = keepValueLimits(value, minPeriod, maxPeriod)
     if (inputValue) {
       setPeriod({ value: inputValue, inputValue, sliderValue: inputValue })
+    } else if (target.value === '') {
+      setPeriod({ value: minPeriod, inputValue: minPeriod, sliderValue: minPeriod })
     }
   }
 
   const handlePeriodSliderChange = sliderValue => {
     setPeriod({ value: sliderValue, inputValue: sliderValue, sliderValue })
   }
+
+  const handleGetCreditBtnClick = () => {
+    // eslint-disable-next-line no-alert
+    alert(`¡Obtuviste tu crédito por $${credit.value} en ${period.value} cuotas s/interés!`)
+  }
+
+  const handleGetFeesDetailBtnClick = () => {
+    // eslint-disable-next-line no-alert
+    alert(`Detalle de cuotas:\n\n${showFeesDetail()}`)
+  }
   /* End of Events Handler Functions */
+
+  numeral.locale('en')
+  const feeAmount = Math.round((credit.value / period.value) * 100) / 100
+  numeral.defaultFormat('$ 0,0.00')
+  const feeAmountFormatted = numeral(feeAmount).format()
 
   return (
     <div className="simulator-container">
@@ -131,7 +171,7 @@ export default function CreditSimulator() {
       />
       <div className="fee-container">
         <p className="fee-title">CUOTA FIJA POR MES</p>
-        <p className="fee-amount">$ {Math.round((credit.value / period.value) * 100) / 100}</p>
+        <p className="fee-amount">{feeAmountFormatted}</p>
       </div>
       <div className="buttons-container">
         <Button
@@ -141,6 +181,7 @@ export default function CreditSimulator() {
           bkColor="#75D1A8"
           color="white"
           fontSize={20}
+          onClick={handleGetCreditBtnClick}
         />
         <Button
           label="VER DETALLE DE CUOTAS"
@@ -148,6 +189,7 @@ export default function CreditSimulator() {
           width="34%"
           bkColor="#3E76CC"
           color="white"
+          onClick={handleGetFeesDetailBtnClick}
         />
       </div>
     </div>

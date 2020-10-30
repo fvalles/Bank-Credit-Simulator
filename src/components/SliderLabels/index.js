@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
+import numeral from 'numeral'
+import 'numeral/locales/es'
 
 export default function SliderLabels({ min, max, currency }) {
-  let formattedMin
-  let formattedMax
+  numeral.locale('es')
+  let formattedMin = min
+  let formattedMax = max
   if (currency) {
-    formattedMin = `${currency} ${min}`
-    formattedMax = `${currency} ${max}`
-  } else {
-    formattedMin = min
-    formattedMax = max
+    numeral.defaultFormat('$ 0,0')
+    formattedMin = numeral(min).format()
+    formattedMax = numeral(max).format()
   }
   return (
     <div className="labels-container" style={currency ? { width: '100%' } : { width: '85%' }}>

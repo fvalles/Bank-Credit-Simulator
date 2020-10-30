@@ -40,7 +40,7 @@ export default function Selector({
 
 Selector.propTypes = {
   currency: PropTypes.string.isRequired,
-  inputValue: PropTypes.number.isRequired,
+  inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   label: PropTypes.string.isRequired,
   maxValue: PropTypes.number.isRequired,
   minValue: PropTypes.number.isRequired,

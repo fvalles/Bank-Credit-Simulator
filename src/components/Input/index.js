@@ -1,17 +1,29 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import './style.css'
+import numeral from 'numeral'
+import 'numeral/locales/es'
 
 export default function Input({ currency, value, placeHolder, onChange, onBlur }) {
-  const inputContainerClass = currency ? 'input-currency-container' : 'input-container'
+  numeral.locale('es')
+  let number
+  let inputType
+  if (currency) {
+    numeral.defaultFormat('$ 0,0')
+    number = numeral(value).format()
+    inputType = 'string'
+  } else {
+    number = value
+    inputType = 'number'
+  }
   return (
-    <span className={inputContainerClass}>
+    <span className="input-container">
       <input
-        type="number"
+        type={inputType}
         placeholder={placeHolder}
         onChange={onChange}
         onBlur={onBlur}
-        value={value}
+        value={number}
       />
     </span>
   )
@@ -19,7 +31,7 @@ export default function Input({ currency, value, placeHolder, onChange, onBlur }
 
 Input.propTypes = {
   currency: PropTypes.string,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   placeHolder: PropTypes.string.isRequired,

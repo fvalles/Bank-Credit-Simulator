@@ -1,32 +1,18 @@
 input { 
     background-color: #1348A0;
     border: 1px solid white;
+    box-sizing: border-box;
     color: white;
     font-weight: bold;
     font-size: 25px;
     height: 100%;
-    padding: 0 25px 0 35px;
     text-align: center;
-    width: 90px;
+    width: 140px;
 }
 
 .input-container {
     height: 40px;
     position: relative;
-}
-
-.input-currency-container {
-    height: 40px;
-    position: relative;
-}
-
-.input-currency-container:before {
-    content: "$";
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 40px;
-    padding-left: 10px;
-    position: absolute;
 }
 
 ::-webkit-input-placeholder {

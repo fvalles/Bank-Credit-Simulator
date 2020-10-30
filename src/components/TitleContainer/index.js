@@ -14,7 +14,7 @@ export default function TitleContainer({ currency, value, label, onChange, onBlu
 
 TitleContainer.propTypes = {
   currency: PropTypes.string,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
