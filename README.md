@@ -1,32 +1,8 @@
-# Ejercicio React
+# Simulador de Crédito
+Este repositorio contiene una aplicación desarrollada en **React JS** que imita a un Simulador de crédito.
 
-## Ejercicio
-### Diseño
-![UI](/ejercicio.jpg?raw=true)
-* Los valores con bordes (Monto Total y Plazo) son inputs de numeros.
-* Los textos Obtené Crédito y Ver detalle de cuotas son botones.
-* La font utilizada es Montserrat (ya agregada en el html).
+* Para el manejo de estados se utilizaron **Hooks**.
+* La App es **Responsive**, ya que se aplicaron **Media Queries**.
+* La versión productiva está alojada en mi cuenta de **Heroku**!
 
-### Implementación
-1. Maquetar el diseño provisto creando los componentes que crea necesarios.
-2. Implementar la siguiente funcionalidad:
-    1. Utilizar la libreria [rc-slider](http://react-component.github.io/slider/) (ya agregada como dependencia) para dar funcionalidad a los sliders.
-    2. Al mover los sliders se deberan actualizar los valores de Monto Total y Plazo al valor actual del slider.
-    3. Deberá actualizarse el valor de Cuota fija por mes siendo este valor el Monto total seleccionado, dividido el Plazo seleccionado.
-
-## Codigo provisto
-
-### Estructura de archivos
-
-````
-build/
-src/
-|- index.jsx _______________________________ # entrada de la aplicación
-|- App.jsx _________________________________ # Componente principal
-````
-
-### Instalación
-
-1. Descargar el codigo de Github con la opción de descarga o hacer un fork del repositorio (a gusto). 
-2. `yarn` o `npm install` para instalar paquetes npm 
-3. `yarn start` o `npm start` para inicializar server de desarrollo
+Para visitar la App entrar a: **https://credit-simulator-reactjs.herokuapp.com/**
