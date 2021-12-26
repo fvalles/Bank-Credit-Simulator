@@ -1,8 +1,8 @@
-# Simulador de Crédito
-Este repositorio contiene una aplicación desarrollada en **React JS** que imita a un Simulador de crédito.
+# Bank Credit Simulator
+This repository holds a bank credit simulator App developed with **React JS**.
 
-* Para el manejo de estados se utilizaron **Hooks**.
-* La App es **Responsive**, ya que se aplicaron **Media Queries**.
-* La versión productiva está alojada en mi cuenta de **Heroku**!
+* For state management **Hooks** where used.
+* The App is **Responsive**, as **Media Queries** were applied.
+* The productive version is hosted in my **Heroku** account!
 
-Para visitar la App entrar a: **https://credit-simulator-reactjs.herokuapp.com/**
+To visit this App visit the following link: **https://credit-simulator-reactjs.herokuapp.com/**
